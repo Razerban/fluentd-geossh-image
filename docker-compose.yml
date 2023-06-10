@@ -1,0 +1,9 @@
+version: '3'
+services:
+  fluentd:
+    build: .
+    restart: unless-stopped
+    container_name: fluentd
+    volumes:
+    - ./config:/fluentd/etc
+    - ./log:/var/log
