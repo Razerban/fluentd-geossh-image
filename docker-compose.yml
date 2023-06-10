@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     container_name: fluentd
     volumes:
-    - ./fluentd/config:/fluentd/etc
+    - ./fluentd/etc:/fluentd/etc
     - ./fluentd/log:/var/log
     depends_on:
       - influxdb
