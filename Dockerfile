@@ -14,6 +14,8 @@ RUN apk add --no-cache --update --virtual .build-deps \
                                         fluent-plugin-ipinfo \
                                         fluent-plugin-record-modifier \
                                         fluent-plugin-rewrite-tag-filter \
+                                        fluent-plugin-prometheus \
+                                        async-http \
     && fluent-gem sources --clear-all \
     && apk del .build-deps \
     && rm -rf /tmp/* \

@@ -4,6 +4,12 @@ services:
     build: .
     restart: unless-stopped
     container_name: fluentd
+    expose:
+      - 24224/tcp
+      - 24231/tcp
+      - 5140/tcp
+    ports:
+      - 24231:24231/tcp
     volumes:
     - ./fluentd/etc:/fluentd/etc
     - ./fluentd/log:/var/log
@@ -15,7 +21,7 @@ services:
     restart: unless-stopped
     container_name: influxdb
     expose:
-      - 8086
+      - 8086/tcp
     environment:
       - "INFLUXDB_HTTP_AUTH_ENABLED=true"
       - "INFLUXDB_ADMIN_USER=influxdb"
@@ -33,9 +39,9 @@ services:
     restart: unless-stopped
     container_name: grafana
     expose:
-      - 3000
+      - 3000/tcp
     ports:
-      - 3000:3000
+      - 3000:3000/tcp
     environment:
       - "GF_DEFAULT_APP_MODE=production"
       - "GF_DEFAULT_INSTANCE_NAME=(>_<)"
